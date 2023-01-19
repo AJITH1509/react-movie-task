@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <Movies />
+      <Liked />
     </div>
   );
 }
@@ -102,7 +103,7 @@ function Movies() {
     },
   ];
   return (
-    <div className="App">
+    <div className="movie-list">
       {details.map((ele) => (
         <Movielist props={ele} />
       ))}
@@ -118,6 +119,18 @@ function Movielist({ props }) {
         <p className="rating">⭐{props.rating}</p>
       </div>
       <p>{props.summary}</p>
+      <Liked />
+    </div>
+  );
+}
+
+function Liked() {
+  const [like, setLike] = useState(0);
+  const [dislike, setUnlike] = useState(0);
+  return (
+    <div className="likes">
+      <button onClick={() => setLike(like + 1)}>👍{like}</button>
+      <button onClick={() => setUnlike(dislike + 1)}>👎{dislike}</button>
     </div>
   );
 }
