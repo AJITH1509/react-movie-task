@@ -5,6 +5,14 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      <div className="header">
+        <h1 className="sitename">Movie Reviews</h1>
+        <input className="search" placeholder="search movies" />
+        <button onClick={() => Alert()} className="login">
+          Login
+        </button>
+      </div>
+
       <Movies />
     </div>
   );
@@ -117,7 +125,7 @@ function Movielist({ props }) {
         <h2 className="heading">{props.name}</h2>
         <p className="rating">⭐{props.rating}</p>
       </div>
-      <p>{props.summary}</p>
+      <p className="description">{props.summary}</p>
       <Liked />
     </div>
   );
@@ -132,4 +140,7 @@ function Liked() {
       <button onClick={() => setUnlike(dislike + 1)}>👎{dislike}</button>
     </div>
   );
+}
+function Alert() {
+  alert("Site is under construction 😊 Thanks for visit");
 }
