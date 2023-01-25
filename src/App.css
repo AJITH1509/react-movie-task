@@ -21,7 +21,7 @@ object-fit: cover;
 .moviecontainer{
   width: auto;
   margin: 10px 10px 10px 10px;
-  border: 2px solid white;
+  border: 2px solid rgb(0, 0, 0);
 }
 .likes{
   display: flex;
@@ -37,11 +37,12 @@ object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: #646cff;
 }
 .login{
   height: 40px;
   text-align: center;
-  background-color: rgb(75, 99, 99);
+  background-color: rgb(7, 237, 237);
 }
 .search{
   height: 20px;
@@ -50,8 +51,9 @@ object-fit: cover;
   padding-left: 10px;
 }
 .sitename{
-  font-family: 'Times New Roman', Times, serif;
-  padding-right: 40px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-right: 20px;
+  color: white;
 }
 button {
   border-radius: 8px;
