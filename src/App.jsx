@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <div className="header">
         <h1 className="sitename">Movie Reviews</h1>
-        <input className="search" placeholder="search movies" />
         <button onClick={() => Alert()} className="login">
           Login
         </button>
@@ -20,7 +19,7 @@ function App() {
 
 export default App;
 
-function Movies() {
+function Movies({ incrementCart }) {
   const details = [
     {
       name: "Vikram",
@@ -112,12 +111,12 @@ function Movies() {
   return (
     <div className="movie-list">
       {details.map((ele) => (
-        <Movielist props={ele} />
+        <Movielist props={ele} incrementCart={incrementCart} />
       ))}
     </div>
   );
 }
-function Movielist({ props }) {
+function Movielist({ props, incrementCart }) {
   return (
     <div className="moviecontainer">
       <img className="img" src={props.poster} />
@@ -131,7 +130,7 @@ function Movielist({ props }) {
   );
 }
 
-function Liked() {
+function Liked({ incrementCart }) {
   const [like, setLike] = useState(0);
   const [dislike, setUnlike] = useState(0);
   return (

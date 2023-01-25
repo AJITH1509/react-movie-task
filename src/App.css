@@ -1,10 +1,9 @@
 .movie-list{
-  
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap:10px;
   justify-items: center;
-  margin: 10px 30px 10px 30px;
+  margin: 10px 10px 10px 0px;
 }
 .img{
 width: 100%;
@@ -20,6 +19,7 @@ object-fit: cover;
   padding: 0px 5px 0px 5px;
 }
 .moviecontainer{
+  width: auto;
   margin: 10px 10px 10px 10px;
   border: 2px solid white;
 }
@@ -37,7 +37,6 @@ object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #0f171e;
 }
 .login{
   height: 40px;
@@ -53,4 +52,21 @@ object-fit: cover;
 .sitename{
   font-family: 'Times New Roman', Times, serif;
   padding-right: 40px;
+}
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
