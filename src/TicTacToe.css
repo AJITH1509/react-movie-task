@@ -1,0 +1,49 @@
+.Game-box{
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    font-size: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.Game-box:hover{
+    background-color: rgba(128, 128, 128, 0.321);
+}
+.board{
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    width:min-content;
+    margin: 10px auto;
+}
+.Tic-Tac-Toe{
+    text-align: center;
+    font-size: 20px;
+}
+.winner{
+    font-size: 50px;
+    margin: 5px auto;
+}
+@media screen and (max-width:762px){
+    .Game-box{
+        border: 2px solid black;
+        width: 100px;
+        height: 100px;
+        font-size: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family:Arial, Helvetica, sans-serif;
+        cursor: pointer;
+    }
+    .winner{
+        font-size: 25px;
+        margin: 5px auto;
+    }
+    .Tic-Tac-Toe{
+        text-align: center;
+        font-size:10px;
+    }
+}
