@@ -87,6 +87,6 @@ button{
 }
 @media screen and (max-width:760px){
   .trailer{
-    height: min-content;
+    height: 200px;
   }
 }
