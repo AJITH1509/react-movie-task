@@ -1,3 +1,6 @@
+body{
+  margin: 0px ;
+}
 .movie-list{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -22,11 +25,10 @@ object-fit: cover;
 }
 .movie-detail-container{
   max-width: 500px;
-  margin-bottom: 10px;
+  margin : 10px;
 }
-
-#movie-cards{
-  background-color: rgba(24, 23, 23, 0.092);
+.movie-detail-backButton{
+  margin : 10px 0px 10px 10px;
 }
 .description{
  margin: 0px auto;
@@ -84,6 +86,10 @@ input{
 }
 button{
   margin-left: 5px;
+}
+.navBar-items{
+   display: flex;
+   justify-content: space-between;
 }
 @media screen and (max-width:760px){
   .trailer{

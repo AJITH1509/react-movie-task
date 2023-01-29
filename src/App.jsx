@@ -3,11 +3,18 @@ import "./App.css";
 import { MovieList } from "./MovieList";
 import { TicTacToe } from "./TicTacToe";
 import "./TicTacToe.css";
-import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
+import { Routes, Route, useParams, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
 import { NotFound } from "./NotFound";
 import Button from "@mui/material/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import { useState } from "react";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 function App() {
   const details = [
@@ -120,37 +127,61 @@ function App() {
       id: "109",
     },
   ];
+  const navigate = useNavigate();
+  const [modes, setModes] = useState(true);
+  const darkTheme = createTheme({
+    palette: {
+      mode: modes ? "light" : "dark",
+    },
+  });
 
   return (
-    <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/movies">Movies</Link>
-          </li>
-          <li>
-            <Link to="/addcolor">Color Game</Link>
-          </li>
-          <li>
-            <Link to="/TicTacToe">Tic Tac Toe</Link>
-          </li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<MovieList details={details} />} />
-        <Route
-          path="/movies/:id"
-          element={<MovieDetails details={details} />}
-        />
-        <Route path="/addcolor" element={<AddColor />} />
-        <Route path="/TicTacToe" element={<TicTacToe />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <Paper elevation={0}>
+        <div className="App">
+          <AppBar position="static">
+            <Toolbar className="navBar-items">
+              <div>
+                {" "}
+                <Button onClick={() => navigate("/")} color="inherit">
+                  Home
+                </Button>
+                <Button onClick={() => navigate("/movies")} color="inherit">
+                  Movies
+                </Button>
+                <Button onClick={() => navigate("/addcolor")} color="inherit">
+                  Color Game
+                </Button>
+                <Button onClick={() => navigate("/TicTacToe")} color="inherit">
+                  Tic Tac Toe
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="outlined"
+                  onClick={() => setModes(!modes)}
+                  color="inherit"
+                  startIcon={modes ? <DarkModeIcon /> : <LightModeIcon />}
+                >
+                  {modes ? "Dark mode" : "Light Mode"}
+                </Button>
+              </div>
+            </Toolbar>
+          </AppBar>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<MovieList details={details} />} />
+            <Route
+              path="/movies/:id"
+              element={<MovieDetails details={details} />}
+            />
+            <Route path="/addcolor" element={<AddColor />} />
+            <Route path="/TicTacToe" element={<TicTacToe />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </Paper>
+    </ThemeProvider>
   );
 }
 
@@ -184,15 +215,17 @@ function MovieDetails({ details }) {
         </div>
         <p className="description">{movie.summary}</p>
       </div>
-      <Button
-        variant="contained"
-        color="secondary"
-        size="small"
-        onClick={() => navigate(-1)}
-        startIcon={<KeyboardBackspaceIcon fontSize="small" />}
-      >
-        Back
-      </Button>
+      <div className="movie-detail-backButton">
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={() => navigate(-1)}
+          startIcon={<KeyboardBackspaceIcon fontSize="small" />}
+        >
+          Back
+        </Button>
+      </div>
     </div>
   );
 }
