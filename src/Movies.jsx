@@ -8,15 +8,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import InfoIcon from "@mui/icons-material/Info";
+import { useNavigate } from "react-router-dom";
 
-export function MovieDetails({ props }) {
+export function Movies({ props, id }) {
   const [show, setShow] = useState(true);
   const styles = {
     color: props.rating > 8 ? "green" : "red",
   };
+  const navigate = useNavigate();
   return (
-    <Card className="moviecontainer">
+    <Card className="moviecontainer" id="movie-cards">
       <img className="img" src={props.poster} />
       <CardContent>
         <div className="specs">
@@ -28,6 +30,13 @@ export function MovieDetails({ props }) {
               aria-label="Toggle-Summary"
             >
               {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            </IconButton>
+            <IconButton
+              onClick={() => navigate(`/movies/${id}`)}
+              color="primary"
+              aria-label="movies-info"
+            >
+              <InfoIcon />
             </IconButton>
           </h2>
           <p style={styles} className="rating">

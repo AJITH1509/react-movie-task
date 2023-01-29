@@ -1,7 +1,6 @@
 .movie-list{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap:10px;
   justify-items: center;
 }
 .img{
@@ -20,6 +19,14 @@ object-fit: cover;
   width: 340px;
   margin: 10px 10px 10px 10px;
   height: min-content;
+}
+.movie-detail-container{
+  max-width: 500px;
+  margin-bottom: 10px;
+}
+
+#movie-cards{
+  background-color: rgba(24, 23, 23, 0.092);
 }
 .description{
  margin: 0px auto;
@@ -77,4 +84,9 @@ input{
 }
 button{
   margin-left: 5px;
+}
+@media screen and (max-width:760px){
+  .trailer{
+    height: min-content;
+  }
 }

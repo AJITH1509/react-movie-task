@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 
 export function LikeCounts({ incrementCart }) {
   const [like, setLike] = useState(0);
@@ -15,7 +15,7 @@ export function LikeCounts({ incrementCart }) {
           aria-label="Like"
           size="small"
         >
-          👍
+          <ThumbUpOutlinedIcon />
         </IconButton>
       </Badge>
       <Badge badgeContent={dislike} color="error">
@@ -24,7 +24,7 @@ export function LikeCounts({ incrementCart }) {
           aria-label="DisLike"
           size="small"
         >
-          👎
+          <ThumbDownOutlinedIcon />
         </IconButton>
       </Badge>
     </div>
