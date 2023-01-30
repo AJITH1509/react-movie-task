@@ -62,10 +62,8 @@ object-fit: cover;
   margin-top: 5px;
   border-radius: 5px;
 }
-.para{
-  opacity: 0.5;
-  margin-top: 0px;
-  color: black;
+.color-Blocks{
+  margin: 0px auto;
 }
 .container{
   display: flex;
@@ -91,6 +89,18 @@ button{
    display: flex;
    justify-content: space-between;
 }
+.add-movie-list{
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 5px;
+  margin: 10px auto;
+}
+#add-movie-card{
+max-width:600px;
+margin: 10px auto;
+}
+
 @media screen and (max-width:760px){
   .trailer{
     height: 200px;

@@ -3,11 +3,10 @@ import "./App.css";
 import { MovieList } from "./MovieList";
 import { TicTacToe } from "./TicTacToe";
 import "./TicTacToe.css";
-import { Routes, Route, useParams, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
 import { NotFound } from "./NotFound";
 import Button from "@mui/material/Button";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -15,9 +14,14 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { MovieDetails } from "./MovieDetails";
+import TextField from "@mui/material/TextField";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
 
 function App() {
-  const details = [
+  const [details, setDetails] = useState([
     {
       id: "99",
       name: "Vikram",
@@ -126,12 +130,12 @@ function App() {
       trailer: "https://youtu.be/NgsQ8mVkN8w",
       id: "109",
     },
-  ];
+  ]);
   const navigate = useNavigate();
-  const [modes, setModes] = useState(true);
+  const [mode, setMode] = useState(true);
   const darkTheme = createTheme({
     palette: {
-      mode: modes ? "light" : "dark",
+      mode: mode ? "light" : "dark",
     },
   });
 
@@ -155,15 +159,18 @@ function App() {
                 <Button onClick={() => navigate("/TicTacToe")} color="inherit">
                   Tic Tac Toe
                 </Button>
+                <Button onClick={() => navigate("/addmovie")} color="inherit">
+                  Add Movies
+                </Button>
               </div>
               <div>
                 <Button
                   variant="outlined"
-                  onClick={() => setModes(!modes)}
+                  onClick={() => setMode(!mode)}
                   color="inherit"
-                  startIcon={modes ? <DarkModeIcon /> : <LightModeIcon />}
+                  startIcon={mode ? <DarkModeIcon /> : <LightModeIcon />}
                 >
-                  {modes ? "Dark mode" : "Light Mode"}
+                  {mode ? "Dark mode" : "Light Mode"}
                 </Button>
               </div>
             </Toolbar>
@@ -177,6 +184,10 @@ function App() {
             />
             <Route path="/addcolor" element={<AddColor />} />
             <Route path="/TicTacToe" element={<TicTacToe />} />
+            <Route
+              path="/addmovie"
+              element={<AddMovie details={details} setDetails={setDetails} />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
@@ -186,46 +197,63 @@ function App() {
 }
 
 export default App;
-function MovieDetails({ details }) {
-  const { id } = useParams();
-  const movie = details[id];
-  const styles = {
-    color: movie.rating > 8 ? "green" : "red",
-  };
-  const navigate = useNavigate();
-
+function AddMovie({ details, setDetails }) {
+  const [MovieName, setMovieName] = useState("");
+  const [poster, setPoster] = useState("");
+  const [rating, setRating] = useState("");
+  const [summary, setSummary] = useState("");
+  const [trailer, setTrailer] = useState("");
   return (
-    <div>
-      <iframe
-        className="trailer"
-        width="100%"
-        height="600"
-        src={movie.trailer}
-        title="Ranjithame - Varisu Lyric Song (Tamil) | Thalapathy Vijay | Rashmika | Vamshi Paidipally | Thaman S"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-      <div className="movie-detail-container">
-        <div className="specs">
-          <h2 className="movie-title">{movie.name}</h2>
-          <p style={styles} className="rating">
-            ⭐{movie.rating}
-          </p>
+    <Card id="add-movie-card">
+      <CardContent>
+        <div className="add-movie-list">
+          <TextField
+            variant="outlined"
+            label="Movie Name"
+            onChange={(event) => setMovieName(event.target.value)}
+            placeholder="Enter Movie Name"
+          />
+          <TextField
+            variant="outlined"
+            label="Poster"
+            onChange={(event) => setPoster(event.target.value)}
+            placeholder="Poster(paste Image Address)"
+          />
+          <TextField
+            variant="outlined"
+            label="Rating"
+            onChange={(event) => setRating(event.target.value)}
+            placeholder="Give Rating"
+          />
+          <TextField
+            variant="outlined"
+            label="Summary"
+            onChange={(event) => setSummary(event.target.value)}
+            placeholder="Add Summary"
+          />
+          <TextField
+            variant="outlined"
+            label="Trailer Link"
+            onChange={(event) => setTrailer(event.target.value)}
+            placeholder="paste Trailer Link"
+          />
+          <Button
+            variant="contained"
+            onClick={() => {
+              const newMovie = {
+                name: MovieName,
+                poster: poster,
+                rating: rating,
+                summary: summary,
+                trailer: trailer,
+              };
+              setDetails([...details, newMovie]);
+            }}
+          >
+            Add Movie
+          </Button>
         </div>
-        <p className="description">{movie.summary}</p>
-      </div>
-      <div className="movie-detail-backButton">
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={() => navigate(-1)}
-          startIcon={<KeyboardBackspaceIcon fontSize="small" />}
-        >
-          Back
-        </Button>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }

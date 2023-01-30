@@ -28,5 +28,5 @@ function ColorBlocks({ colors }) {
   const bclr = {
     backgroundColor: colors,
   };
-  return <div style={bclr} className="blocks"></div>;
+  return <div className="color-Blocks" style={bclr} className="blocks"></div>;
 }
