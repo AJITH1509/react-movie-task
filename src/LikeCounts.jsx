@@ -14,6 +14,7 @@ export function LikeCounts({ incrementCart }) {
           onClick={() => setLike(like + 1)}
           aria-label="Like"
           size="small"
+          color="primary"
         >
           <ThumbUpOutlinedIcon />
         </IconButton>
@@ -23,6 +24,7 @@ export function LikeCounts({ incrementCart }) {
           onClick={() => setUnlike(dislike + 1)}
           aria-label="DisLike"
           size="small"
+          color="error"
         >
           <ThumbDownOutlinedIcon />
         </IconButton>

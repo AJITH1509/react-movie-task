@@ -15,10 +15,9 @@ import { useState } from "react";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { MovieDetails } from "./MovieDetails";
-import TextField from "@mui/material/TextField";
-import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+import { AddMovie } from "./AddMovie";
+import { EditMovies } from "./EditMovies";
 
 function App() {
   const [details, setDetails] = useState([
@@ -141,7 +140,13 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Paper elevation={0}>
+      <Paper
+        sx={{
+          borderRadius: "0px",
+          minHeight: "100vh",
+        }}
+        elevation={5}
+      >
         <div className="App">
           <AppBar position="static">
             <Toolbar className="navBar-items">
@@ -177,18 +182,13 @@ function App() {
           </AppBar>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/movies" element={<MovieList details={details} />} />
-            <Route
-              path="/movies/:id"
-              element={<MovieDetails details={details} />}
-            />
+            <Route path="/movies" element={<MovieList />} />
+            <Route path="/movies/:id" element={<MovieDetails />} />
             <Route path="/addcolor" element={<AddColor />} />
             <Route path="/TicTacToe" element={<TicTacToe />} />
-            <Route
-              path="/addmovie"
-              element={<AddMovie details={details} setDetails={setDetails} />}
-            />
+            <Route path="/addmovie" element={<AddMovie />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/movies/edit/:id" element={<EditMovies />} />
           </Routes>
         </div>
       </Paper>
@@ -197,63 +197,3 @@ function App() {
 }
 
 export default App;
-function AddMovie({ details, setDetails }) {
-  const [MovieName, setMovieName] = useState("");
-  const [poster, setPoster] = useState("");
-  const [rating, setRating] = useState("");
-  const [summary, setSummary] = useState("");
-  const [trailer, setTrailer] = useState("");
-  return (
-    <Card id="add-movie-card">
-      <CardContent>
-        <div className="add-movie-list">
-          <TextField
-            variant="outlined"
-            label="Movie Name"
-            onChange={(event) => setMovieName(event.target.value)}
-            placeholder="Enter Movie Name"
-          />
-          <TextField
-            variant="outlined"
-            label="Poster"
-            onChange={(event) => setPoster(event.target.value)}
-            placeholder="Poster(paste Image Address)"
-          />
-          <TextField
-            variant="outlined"
-            label="Rating"
-            onChange={(event) => setRating(event.target.value)}
-            placeholder="Give Rating"
-          />
-          <TextField
-            variant="outlined"
-            label="Summary"
-            onChange={(event) => setSummary(event.target.value)}
-            placeholder="Add Summary"
-          />
-          <TextField
-            variant="outlined"
-            label="Trailer Link"
-            onChange={(event) => setTrailer(event.target.value)}
-            placeholder="paste Trailer Link"
-          />
-          <Button
-            variant="contained"
-            onClick={() => {
-              const newMovie = {
-                name: MovieName,
-                poster: poster,
-                rating: rating,
-                summary: summary,
-                trailer: trailer,
-              };
-              setDetails([...details, newMovie]);
-            }}
-          >
-            Add Movie
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}

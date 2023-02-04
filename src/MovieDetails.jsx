@@ -1,10 +1,17 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { useEffect, useState } from "react";
 
-export function MovieDetails({ details }) {
+export function MovieDetails() {
   const { id } = useParams();
-  const movie = details[id];
+  const [movie, setMovie] = useState({});
+  useEffect(() => {
+    fetch(`https://63d762535c4274b136f32dc4.mockapi.io/movies/${id}`)
+      .then((data) => data.json())
+      .then((mov) => setMovie(mov));
+  }, []);
+
   const styles = {
     color: movie.rating > 8 ? "green" : "red",
   };
@@ -17,7 +24,7 @@ export function MovieDetails({ details }) {
         width="100%"
         height="600"
         src={movie.trailer}
-        title="{movie.name}"
+        title={movie.name}
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen

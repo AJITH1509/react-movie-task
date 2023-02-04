@@ -11,8 +11,8 @@ import CardContent from "@mui/material/CardContent";
 import InfoIcon from "@mui/icons-material/Info";
 import { useNavigate } from "react-router-dom";
 
-export function Movies({ props, id }) {
-  const [show, setShow] = useState(true);
+export function Movies({ props, id, deleteButton, editButton }) {
+  const [show, setShow] = useState(false);
   const styles = {
     color: props.rating > 8 ? "green" : "red",
   };
@@ -46,7 +46,7 @@ export function Movies({ props, id }) {
         {show ? <p className="description">{props.summary}</p> : null}
       </CardContent>
       <CardActions>
-        <LikeCounts />
+        <LikeCounts /> {deleteButton} {editButton}
       </CardActions>
     </Card>
   );
