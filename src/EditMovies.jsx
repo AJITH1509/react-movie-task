@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
+import { API } from "./global";
 
 const formValidationSchema = yup.object({
   name: yup.string().required(),
@@ -19,7 +20,7 @@ export function EditMovies() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   useEffect(() => {
-    fetch(`https://63d762535c4274b136f32dc4.mockapi.io/movies/${id}`)
+    fetch(`${API}/movies/${id}`)
       .then((data) => data.json())
       .then((mov) => setMovie(mov));
   }, [id]);
@@ -43,14 +44,11 @@ function EditMovieForm({ movie }) {
       },
     });
   const addMovie = async (updateMovie) => {
-    await fetch(
-      `https://63d762535c4274b136f32dc4.mockapi.io/movies/${movie.id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(updateMovie),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    await fetch(`${API}/movies/${movie.id}`, {
+      method: "PUT",
+      body: JSON.stringify(updateMovie),
+      headers: { "Content-Type": "application/json" },
+    });
 
     navigate("/movies");
   };

@@ -59,7 +59,11 @@ export function TicTacToe() {
       <h1>Tic Tac Toe Game</h1>
       <div className="board">
         {board.map((val, index) => (
-          <GameBox val={val} onPlayerClick={() => handleClick(index)} />
+          <GameBox
+            key={index}
+            val={val}
+            onPlayerClick={() => handleClick(index)}
+          />
         ))}
       </div>
       <Button onClick={restartGame} size="small" variant="contained">
@@ -69,13 +73,18 @@ export function TicTacToe() {
     </div>
   );
 }
-function GameBox({ val, onPlayerClick }) {
+function GameBox({ val, onPlayerClick, index }) {
   // const [val, setVal] = useState("");
   const styles = {
     color: val === "X" ? "red" : "green",
   };
   return (
-    <div style={styles} onClick={onPlayerClick} className="Game-box">
+    <div
+      key={index}
+      style={styles}
+      onClick={onPlayerClick}
+      className="Game-box"
+    >
       {val}
     </div>
   );

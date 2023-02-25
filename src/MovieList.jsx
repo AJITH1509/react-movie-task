@@ -4,17 +4,18 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
+import { API } from "./global";
 
 export function MovieList() {
   const [details, setDetails] = useState([]);
   const getMovies = () => {
-    fetch("https://63d762535c4274b136f32dc4.mockapi.io/movies")
+    fetch(`${API}/movies`)
       .then((data) => data.json())
       .then((mov) => setDetails(mov));
   };
   useEffect(() => getMovies(), []);
   const deleteMovies = async (id) => {
-    await fetch(`https://63d762535c4274b136f32dc4.mockapi.io/movies/${id}`, {
+    await fetch(`${API}/movies/${id}`, {
       method: "DELETE",
     });
     getMovies();
