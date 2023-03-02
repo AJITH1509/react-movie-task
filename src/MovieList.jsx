@@ -25,17 +25,17 @@ export function MovieList() {
     <div className="movie-list">
       {details.map((movie) => (
         <Movies
-          key={movie.id}
+          key={movie._id}
           props={movie}
-          id={movie.id}
+          id={movie._id}
           deleteButton={
             <IconButton sx={{ marginLeft: "auto" }} color="error">
-              <DeleteIcon onClick={() => deleteMovies(movie.id)} />
+              <DeleteIcon onClick={() => deleteMovies(movie._id)} />
             </IconButton>
           }
           editButton={
             <IconButton sx={{ marginLeft: "auto" }} color="secondary">
-              <EditIcon onClick={() => navigate(`/movies/edit/${movie.id}`)} />
+              <EditIcon onClick={() => navigate(`/movies/edit/${movie._id}`)} />
             </IconButton>
           }
         />
