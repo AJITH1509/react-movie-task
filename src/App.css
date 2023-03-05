@@ -59,14 +59,18 @@ object-fit: cover;
   padding-right: 20px;
   color: white;
 }
-.blocks{
+.colors-container{
+  margin: 0px auto;
+  display: flex;
+  max-width: 400px;
+
+}
+.color-Blocks{
+  margin: 0px auto;
   width: 300px;
   height: 20px;
   margin-top: 5px;
   border-radius: 5px;
-}
-.color-Blocks{
-  margin: 0px auto;
 }
 .container{
   display: flex;
