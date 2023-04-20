@@ -4,20 +4,27 @@ import Button from "@mui/material/Button";
 export function ColorBox() {
   const [button, setButton] = useState(true);
   const [color, setColor] = useState("skyblue");
+  const [index, setIndex] = useState("");
+  const [addcolor, setAddcolor] = useState([]);
 
-  function editColor(colors) {
+  function editColor(colors, index) {
     setColor(colors);
     setButton(false);
+    setIndex(index);
+    console.log(index);
   }
 
   function updateColor() {
+    const updatedColors = [...addcolor]; // create a copy of the colors array
+    updatedColors[index] = color; // update the color at the specified index
+    setAddcolor(updatedColors); // set the state with the updated colors array
     setButton(true);
   }
 
   const styles = {
     backgroundColor: color,
   };
-  const [addcolor, setAddcolor] = useState([]);
+
   return (
     <div>
       <div className="container">
@@ -41,19 +48,24 @@ export function ColorBox() {
         )}
       </div>
       {addcolor.map((clr, index) => (
-        <ColorBlocks colors={clr} key={index} editColor={editColor} />
+        <ColorBlocks
+          colors={clr}
+          key={index}
+          index={index}
+          editColor={editColor}
+        />
       ))}
     </div>
   );
 }
-function ColorBlocks({ colors, editColor }) {
+function ColorBlocks({ colors, index, editColor }) {
   const bclr = {
     backgroundColor: colors,
   };
   return (
     <div className="colors-container">
       <div className="color-Blocks" style={bclr}></div>
-      <Button onClick={() => editColor(colors)}>edit</Button>
+      <Button onClick={() => editColor(colors, index)}>edit</Button>
     </div>
   );
 }
