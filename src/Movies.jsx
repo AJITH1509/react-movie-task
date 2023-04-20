@@ -18,8 +18,8 @@ export function Movies({ props, id, deleteButton, editButton }) {
   };
   const navigate = useNavigate();
   return (
-    <Card className="moviecontainer" id="movie-cards">
-      <img className="img" src={props.poster} />
+    <Card id="movie-cards">
+      <img className="img" alt={props.poster} src={props.poster} />
       <CardContent>
         <div className="specs">
           <h2 className="movie-title">

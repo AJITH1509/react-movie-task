@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
 import { API } from "../global";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const formValidationSchema = yup.object({
   name: yup.string().required(),
@@ -24,7 +25,11 @@ export function EditMovies() {
       .then((data) => data.json())
       .then((mov) => setMovie(mov));
   }, [id]);
-  return movie ? <EditMovieForm movie={movie} /> : <h1>loading....</h1>;
+  return movie ? (
+    <EditMovieForm movie={movie} />
+  ) : (
+    <LinearProgress color="success" />
+  );
 }
 function EditMovieForm({ movie }) {
   const navigate = useNavigate();

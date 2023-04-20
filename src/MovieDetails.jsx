@@ -11,7 +11,7 @@ export function MovieDetails() {
     fetch(`${API}/movies/${id}`)
       .then((data) => data.json())
       .then((mov) => setMovie(mov));
-  }, []);
+  }, [id]);
 
   const styles = {
     color: movie.rating > 8 ? "green" : "red",

@@ -7,6 +7,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
 import { NotFound } from "./NotFound";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -15,7 +16,6 @@ import { useState } from "react";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { MovieDetails } from "./MovieDetails";
-import CardActions from "@mui/material/CardActions";
 import { AddMovie } from "./AddMovie";
 import { EditMovies } from "./EditMovies";
 
@@ -40,8 +40,8 @@ function App() {
         <div className="App">
           <AppBar position="static">
             <Toolbar className="navBar-items">
+              <div></div>
               <div>
-                {" "}
                 <Button onClick={() => navigate("/")} color="inherit">
                   Home
                 </Button>
@@ -57,16 +57,13 @@ function App() {
                 <Button onClick={() => navigate("/addmovie")} color="inherit">
                   Add Movies
                 </Button>
-              </div>
-              <div>
-                <Button
+                <IconButton
                   variant="outlined"
                   onClick={() => setMode(!mode)}
                   color="inherit"
-                  startIcon={mode ? <DarkModeIcon /> : <LightModeIcon />}
                 >
-                  {mode ? "Dark mode" : "Light Mode"}
-                </Button>
+                  {mode ? <DarkModeIcon /> : <LightModeIcon />}
+                </IconButton>
               </div>
             </Toolbar>
           </AppBar>

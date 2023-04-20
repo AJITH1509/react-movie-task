@@ -17,7 +17,6 @@ export function TicTacToe() {
   ]);
   const [isXTurn, setIsXTurn] = useState(true);
   const handleClick = (index) => {
-    console.log(index);
     if (!winner && board[index] === null) {
       const boardCopy = [...board];
       boardCopy[index] = isXTurn ? "X" : "O ";

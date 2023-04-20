@@ -1,8 +1,8 @@
 .Game-box{
-    border: 2px solid black;
-    width: 200px;
-    height: 200px;
-    font-size: 200px;
+    border: 2px solid brown;
+    width: 150px;
+    height: 150px;
+    font-size: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 .Game-box:hover{
-    background-color: rgba(128, 128, 128, 0.321);
+    background-color: rgba(107, 61, 61, 0.321);
 }
 .board{
     display: grid;
@@ -23,7 +23,7 @@
     font-size: 20px;
 }
 .winner{
-    font-size: 50px;
+    font-size: 30px;
     margin: 5px auto;
 }
 @media screen and (max-width:762px){

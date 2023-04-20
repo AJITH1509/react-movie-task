@@ -43,6 +43,7 @@ export function AddMovie() {
   };
   return (
     <Card id="add-movie-card">
+      <h2 style={{ textAlign: "center", margin: "5px" }}>Add Movie</h2>
       <CardContent>
         <form onSubmit={handleSubmit} className="add-movie-list">
           <TextField
