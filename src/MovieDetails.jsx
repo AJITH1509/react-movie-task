@@ -37,7 +37,7 @@ export function MovieDetails() {
             ⭐{movie.rating}
           </p>
         </div>
-        <p className="description">{movie.summary}</p>
+        <p>{movie.summary}</p>
       </div>
       <div className="movie-detail-backButton">
         <Button

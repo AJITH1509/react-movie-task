@@ -45,7 +45,7 @@ export function Movies({ props, id, deleteButton, editButton }) {
         </div>
         {show ? <p className="description">{props.summary}</p> : null}
       </CardContent>
-      <CardActions>
+      <CardActions id="like-delete">
         <LikeCounts /> {deleteButton} {editButton}
       </CardActions>
     </Card>

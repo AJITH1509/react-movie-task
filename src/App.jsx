@@ -42,9 +42,6 @@ function App() {
             <Toolbar className="navBar-items">
               <div></div>
               <div>
-                <Button onClick={() => navigate("/")} color="inherit">
-                  Home
-                </Button>
                 <Button onClick={() => navigate("/movies")} color="inherit">
                   Movies
                 </Button>
@@ -68,7 +65,7 @@ function App() {
             </Toolbar>
           </AppBar>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<MovieList />} />
             <Route path="/movies" element={<MovieList />} />
             <Route path="/movies/:id" element={<MovieDetails />} />
             <Route path="/addcolor" element={<AddColor />} />
