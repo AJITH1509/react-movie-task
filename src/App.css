@@ -20,6 +20,17 @@ body{
   border-radius: 0px;
 }
 
+
+.navBar-items h3{
+  margin: 0px;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: 'Lilita One', cursive;
+}
+.navBar-items h3 span{
+  color: rgb(213, 34, 34);
+}
+
 /* Change the color of the scrollbar thumb when it's being hovered over */
 ::-webkit-scrollbar-thumb:active {
   background-color:rgba(0, 0, 255, 0.579);
@@ -142,6 +153,11 @@ box-shadow: 5px 5px 5px 5px;
   object-fit: cover;
 }
 @media screen and (max-width:768px){
+
+  .navBar-items h3{
+    font-size: 22px;
+  }
+
   .trailer{
     height: 200px;
   }

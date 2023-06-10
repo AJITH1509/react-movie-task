@@ -40,17 +40,21 @@ function App() {
         <div className="App">
           <AppBar position="static">
             <Toolbar className="navBar-items">
-              <div></div>
+              <div>
+                <h3>
+                  Reel <span>Reviews</span>
+                </h3>
+              </div>
               <div>
                 <Button onClick={() => navigate("/movies")} color="inherit">
                   Movies
                 </Button>
-                <Button onClick={() => navigate("/addcolor")} color="inherit">
+                {/* <Button onClick={() => navigate("/addcolor")} color="inherit">
                   Color Game
-                </Button>
-                <Button onClick={() => navigate("/TicTacToe")} color="inherit">
+                </Button> */}
+                {/* <Button onClick={() => navigate("/TicTacToe")} color="inherit">
                   Tic Tac Toe
-                </Button>
+                </Button> */}
                 <Button onClick={() => navigate("/addmovie")} color="inherit">
                   Add Movies
                 </Button>

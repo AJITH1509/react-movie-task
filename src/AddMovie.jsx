@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { useNavigate } from "react-router-dom";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { API } from "../global";
@@ -42,65 +43,76 @@ export function AddMovie() {
     navigate("/movies");
   };
   return (
-    <Card id="add-movie-card">
-      <h2 style={{ textAlign: "center", margin: "5px" }}>Add Movie</h2>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="add-movie-list">
-          <TextField
-            name="name"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.name}
-            placeholder="Enter Movie Name"
-            variant="outlined"
-            label="Movie Name"
-          />
-          {touched.name && errors.name ? errors.name : null}
-          <TextField
-            name="poster"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.poster}
-            variant="outlined"
-            label="Poster"
-            placeholder="paste Image Address"
-          />
-          {touched.poster && errors.poster ? errors.poster : null}
-          <TextField
-            name="rating"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.rating}
-            variant="outlined"
-            label="Rating"
-            placeholder="Give Rating"
-          />
-          {touched.rating && errors.rating ? errors.rating : null}
-          <TextField
-            name="summary"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.summary}
-            variant="outlined"
-            label="Summary"
-            placeholder="Add Summary"
-          />
-          {touched.summary && errors.summary ? errors.summary : null}
-          <TextField
-            name="trailer"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.trailer}
-            variant="outlined"
-            label="Trailer Link"
-            placeholder="paste Trailer Link"
-          />
-          {touched.trailer && errors.trailer ? errors.trailer : null}
-          <Button variant="contained" type="submit">
-            Add Movie
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+    <div>
+      <Button
+        variant="contained"
+        color="secondary"
+        size="small"
+        onClick={() => navigate(-1)}
+        startIcon={<KeyboardBackspaceIcon fontSize="small" />}
+      >
+        Back
+      </Button>
+      <Card id="add-movie-card">
+        <h2 style={{ textAlign: "center", margin: "5px" }}>Add Movie</h2>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="add-movie-list">
+            <TextField
+              name="name"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              placeholder="Enter Movie Name"
+              variant="outlined"
+              label="Movie Name"
+            />
+            {touched.name && errors.name ? errors.name : null}
+            <TextField
+              name="poster"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.poster}
+              variant="outlined"
+              label="Poster"
+              placeholder="paste Image Address"
+            />
+            {touched.poster && errors.poster ? errors.poster : null}
+            <TextField
+              name="rating"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.rating}
+              variant="outlined"
+              label="Rating"
+              placeholder="Give Rating"
+            />
+            {touched.rating && errors.rating ? errors.rating : null}
+            <TextField
+              name="summary"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.summary}
+              variant="outlined"
+              label="Summary"
+              placeholder="Add Summary"
+            />
+            {touched.summary && errors.summary ? errors.summary : null}
+            <TextField
+              name="trailer"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.trailer}
+              variant="outlined"
+              label="Trailer Link"
+              placeholder="paste Trailer Link"
+            />
+            {touched.trailer && errors.trailer ? errors.trailer : null}
+            <Button variant="contained" type="submit">
+              Add Movie
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

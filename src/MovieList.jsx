@@ -61,7 +61,11 @@ export function MovieList() {
           props={movie}
           id={movie._id}
           deleteButton={
-            <IconButton sx={{ marginLeft: "auto" }} color="error">
+            <IconButton
+              disabled="true"
+              sx={{ marginLeft: "auto" }}
+              color="error"
+            >
               <DeleteIcon
                 onClick={() => {
                   setDeleted(movie._id);
