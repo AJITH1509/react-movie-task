@@ -34,7 +34,7 @@ export function AddMovie() {
       },
     });
   const addMovie = async (newMovie) => {
-    await fetch(`${API}/movies`, {
+    await fetch(`${API}/newmovies`, {
       method: "POST",
       body: JSON.stringify(newMovie),
       headers: { "Content-Type": "application/json" },
